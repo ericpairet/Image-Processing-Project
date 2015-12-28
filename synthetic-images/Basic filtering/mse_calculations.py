@@ -44,3 +44,19 @@ baboon_uni_mse = np.mean(np.square(baboon_uni-baboon))
 baboon_nor_mse = np.mean(np.square(baboon_nor-baboon))
 baboon_ric_mse = np.mean(np.square(baboon_ric-baboon))
 baboon_sp_mse = np.mean(np.square(baboon_sp-baboon))
+
+# Calculate PSNR
+lena_uni_psnr = 10*np.log10(1/lena_uni_mse)
+lena_nor_psnr = 10*np.log10(1/lena_nor_mse)
+lena_ric_psnr = 10*np.log10(1/lena_ric_mse)
+lena_sp_psnr = 10*np.log10(1/lena_sp_mse)
+
+cameraman_uni_psnr = 10*np.log10(1/cameraman_uni_mse)
+cameraman_nor_psnr = 10*np.log10(1/cameraman_nor_mse)
+cameraman_ric_psnr = 10*np.log10(1/cameraman_ric_mse)
+cameraman_sp_psnr = 10*np.log10(1/cameraman_sp_mse)
+
+baboon_uni_psnr = 10*np.log10(1/baboon_uni_mse)
+baboon_nor_psnr = 10*np.log10(1/baboon_nor_mse)
+baboon_ric_psnr = 10*np.log10(1/baboon_ric_mse)
+baboon_sp_psnr = 10*np.log10(1/baboon_sp_mse)
