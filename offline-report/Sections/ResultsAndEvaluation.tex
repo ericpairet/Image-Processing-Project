@@ -35,15 +35,81 @@
       \end{varwidth}
   	\end{tabular}
   \caption{} 
-  \label{fig:results_ksvd}
+  \label{fig:results_ksvd_c}
 \end{figure}
 
 \subsubsection{Mean filter}
-add images denoised with mean
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{c c c c c}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_lena.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_cameraman.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_baboon.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_lena_nor_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_cameraman_nor_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_baboon_nor_f.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_lena_ric_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_cameraman_ric_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_baboon_ric_f.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_lena_uni_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_cameraman_uni_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_baboon_uni_f.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_lena_sp_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_cameraman_sp_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_mean/color_baboon_sp_f.jpg}}
+      \end{varwidth}
+  	\end{tabular}
+  \caption{} 
+  \label{fig:results_mean_c}
+\end{figure}
+
 compare with KSVD results
 
 \subsubsection{Median filter}
-add images denoised with median
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{c c c c c}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_lena.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_cameraman.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_baboon.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_lena_nor_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_cameraman_nor_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_baboon_nor_f.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_lena_ric_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_cameraman_ric_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_baboon_ric_f.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_lena_uni_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_cameraman_uni_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_baboon_uni_f.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_lena_sp_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_cameraman_sp_f.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_median/color_baboon_sp_f.jpg}}
+      \end{varwidth}
+  	\end{tabular}
+  \caption{} 
+  \label{fig:results_median_c}
+\end{figure}
+
 compare with KSVD results
 
 \subsubsection{Lee filter}
@@ -82,10 +148,8 @@ compare with KSVD results
       \end{varwidth}
   	\end{tabular}
   \caption{} 
-  \label{fig:results_wavelet}
+  \label{fig:results_wavelet_c}
 \end{figure}
-
-
 
 compare with KSVD results
 
