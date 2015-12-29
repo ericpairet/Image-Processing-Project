@@ -1,0 +1,47 @@
+baboon_nor
+MSE: 1.095603e+03
+PSNR:1.776827e+01
+
+baboon_ric
+MSE: 7.740983e+02
+PSNR:1.927684e+01
+
+baboon_sp
+MSE: 1.929538e+03
+PSNR:1.531027e+01
+
+baboon_uni
+MSE: 1.107692e+03
+PSNR:1.772061e+01
+
+cameraman_nor
+MSE: 6.277514e+02
+PSNR:2.018692e+01
+
+cameraman_ric
+MSE: 3.420952e+02
+PSNR:2.282333e+01
+
+cameraman_sp
+MSE: 1.968325e+02
+PSNR:2.522383e+01
+
+cameraman_uni
+MSE: 6.304075e+02
+PSNR:2.016859e+01
+
+lena_nor
+MSE: 6.680354e+02
+PSNR:1.991680e+01
+
+lena_ric
+MSE: 3.586373e+02
+PSNR:2.261825e+01
+
+lena_sp
+MSE: 4.984718e+02
+PSNR:2.118839e+01
+
+lena_uni
+MSE: 6.798805e+02
+PSNR:1.984047e+01
