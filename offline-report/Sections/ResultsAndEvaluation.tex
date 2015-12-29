@@ -1,10 +1,42 @@
 \section{Results} \label{sc:results}
-Èric: setting this section offline (due to Overleaf limitation). Available in GitHub
+Ȉric: setting this section offline (due to Overleaf limitation). Available in GitHub
 
 \subsection{Synthetic images}
 
 \subsubsection{KSVD}
-add images denoised with KSVD
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{c c c c c}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_lena.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_cameraman.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_baboon.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_lena_nor.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_cameraman_nor.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_baboon_nor.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_lena_ric.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_cameraman_ric.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_baboon_ric.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_lena_uni.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_cameraman_uni.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_baboon_uni.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_lena_sp.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_cameraman_sp.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_KSVD/color_baboon_sp.jpg}}
+      \end{varwidth}
+  	\end{tabular}
+  \caption{} 
+  \label{fig:results_ksvd}
+\end{figure}
 
 \subsubsection{Mean filter}
 add images denoised with mean
@@ -19,7 +51,42 @@ add images denoised with lee
 compare with KSVD results
 
 \subsubsection{Hard and soft thresholding in wavelet domain}
-add images denoised with wavelet
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{c c c c c}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_lena.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_cameraman.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Experiments_synthetic_images/color_baboon.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_lena_nor.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_cameraman_nor.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_baboon_nor.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_lena_ric.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_cameraman_ric.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_baboon_ric.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_lena_uni.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_cameraman_uni.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_baboon_uni.jpg}}
+      \end{varwidth}
+      \begin{varwidth}{0.5\linewidth}
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_lena_sp.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_cameraman_sp.jpg}}\\
+        \subfigure{\includegraphics[width=16mm]{Results_wavelet/color_baboon_sp.jpg}}
+      \end{varwidth}
+  	\end{tabular}
+  \caption{} 
+  \label{fig:results_wavelet}
+\end{figure}
+
+
+
 compare with KSVD results
 
 \subsection{Retinopathy images} 
