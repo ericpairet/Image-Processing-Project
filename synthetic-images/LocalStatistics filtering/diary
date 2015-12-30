@@ -1,0 +1,127 @@
+baboon_nor
+mse =
+
+   1.089873e+03
+
+peaksnr =
+
+  -26.8301
+
+
+
+baboon_ric
+mse =
+
+   3.00040e+03
+
+peaksnr =
+
+  -32.0402
+
+
+
+baboon_sp
+mse =
+
+   1.9865e+03
+peaksnr =
+
+  -28.6465
+
+
+baboon_uni
+mse =
+
+   1.098765e+03
+ 
+peaksnr =
+
+  -26.5302
+
+
+cameraman_nor
+mse =
+
+   1.067879e+03 *
+
+peaksnr =
+
+  -23.5746
+
+
+cameraman_ric
+mse =
+
+  2.86530e+03
+  
+peaksnr =
+
+  -31.9283
+
+
+cameraman_sp
+mse =
+
+   1.356780e+03
+
+peaksnr =
+
+  -26.4614
+
+
+
+cameraman_uni
+mse =
+
+   1.23768e+03
+ 
+peaksnr =
+
+  -26.9646
+
+lena_nor
+mse =
+
+   195.4926
+
+
+peaksnr =
+
+  -23.9623
+
+
+lena_ric
+mse =
+
+   3.09845e+03
+ 
+peaksnr =
+
+  -31.6761
+
+
+lena_sp
+mse =
+
+   1.45120e+03
+
+  
+peaksnr =
+
+  -26.9657
+
+
+lena_uni
+mse =
+
+   1.98742e+03
+ 
+peaksnr =
+
+  -28.6436
+
+
+  
+  
+  
+ 
