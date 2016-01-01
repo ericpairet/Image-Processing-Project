@@ -4,18 +4,106 @@ function m = ksvd_manager()
     m.trySigmas = @trySigmas;
     m.denoiseImagesInFolder = @denoiseImagesInFolder;
 
+    m.test = @test;
+    
     % Include KSVD and OMP code
     addpath('_basis/ksvdbox13')
     addpath('_basis/ompbox10')
 end
     
  
+function t = test()
+
+    clear;
+    clc;
+
+    path_base = '/Users/ericpairet/Others/VIBOT/1st_semester/Image processing/Project/Image-Processing-Project/results/ksvd_tests/';
+    original_image = double( imread( strcat( path_base , '_cameraman/cameraman.jpg' ) ) );
+    original = original_image(:,:,1);
+    
+    sig = 12.75;
+
+    msex(1) = 0;
+    sigmax(1) = 0;
+    psnrx(1) = 0;
+    
+    % Go through all volumes *.mat in the folder
+    files = dir( strcat( path_base , '_cameraman/_noised/' , '*.jpg' ) );
+    o = size( files );
+    for f = 1:1:o(1)
+    
+        % Save the name of the file f
+        image_name = files( f , 1 ).name;
+        fprintf( 2 , cat( 2 , 'Processing image ', cat( 2 , image_name , '...\n' ) ) );
+        
+        % Get image
+        noisy = double( imread( strcat( path_base , '_cameraman/_noised/' , image_name ) ) );
+        noisy_image = noisy(:,:,1);
+
+        % If 0, estimate noise
+        if ( sig == 0 )
+            sigmax(f) = estimateNoise( noisy_image( 412:512 , 1:100 ) );
+        else
+            sigmax(f) = sig;
+        end
+
+        % Configure KSVD parameters
+        % Required parameters
+        params.x = noisy_image;
+        params.blocksize = 4; %blocksize;       % 8                         % higher, better results, but more blurry
+        params.dictsize = 256; %dictsize;         % 256                       % sqrt(dictsize) is the number of patches of the dictionary
+        params.sigma = sigmax(f);
+        params.trainnum = 40000;%trainnum;         % 40000                     % increasing the trainnum improves the result unitl a trainnum limit (trainnum >= dictsize)
+
+        % Optional parameters
+        params.initdict = 'odct';           % 'odct'                    % there is no big difference between 'odct' and 'data' dictionary                 
+        params.stepsize = 1;                % 1                         % incresing the stepsize, the result is worse
+        params.internum = 20;               % 10                        % not much difference ?
+        params.maxval = 255;                % 1 
+        params.memusage = 'high';           % 'normal'
+        params.noisemode = 'sigma';         % 'sigma'
+        params.gain = 1.15;                 % 1.15                      % decreasing the gain the images is less denoised but better perserves the edges
+        params.lambda = 0.1 * 255 / sigmax(f);  % 0.1 * maxval / sigma
+        params.maxatoms = 2;                % prod( blocsize ) / 2      % higher, better results
+        params.exact = 0;                   % 0                         % not much difference ?
+        %params = setParameters( noisy_image , 2 , 256 , sigma , 40000 );
+
+        % Perform KSVD
+        [ X , D ] = ksvddenoise( params );
+        
+        % Save image
+        imwrite( uint8( X ) , strcat( path_base , image_name ) , 'jpg' );
+
+        % Evaluate result
+        [msex(f) , psnrx(f)] = evaluateResults( original , X );
+    end
+    
+    % Create matrix with the data to save
+    data = [1:1:size( msex , 2 ) ; sigmax ; msex ; psnrx];
+    
+    % Create file
+    fileID = fopen( strcat( path_base , 'results.txt' ) , 'wt' );
+    
+    % Print header
+    fprintf( fileID , '%3s %6s %6s %6s\n' , 'i' , 'e_sig' , 'MSE' , 'PSNR' );
+    
+    % Print data
+    fprintf( fileID , '%3i %3.3f %6.3f %6.3f \n' , data );
+    
+    % Close file
+    fclose( fileID );
+    
+    display('DONE!');
+end
+
+
 
 % Denoise an .jpg image
 function u = denoiseImage( path , sigma )      
     
     % Read image
-    original = double( rgb2gray( imread( path ) ) );
+    %original = double( rgb2gray( imread( path ) ) );
+    original = double( imread( path ) );
 
     % If 0, input image is noisy. Otherwise, add noise
     if ( sigma == 0 )
@@ -151,16 +239,19 @@ end
 
 % Main function for denoising and storing the results
 function x = denoiseImagesInFolder()
-    
+    tic;
     % Just for test
-    folder = '../../database/retinopathy/matlab_data/'; 
+    folder = '/Users/ericpairet/Desktop/_tiff/'; 
+    outputFileName = 'P741009OS-denoised.tiff';
     
     % Clean workspace
     clc;
-    clearvars -except folder;
+    clearvars -except folder outputFileName;
     
     % Go through all volumes *.mat in the folder
     files = dir( cat( 2 , folder , '*.mat' ) );
+    files.name
+    
     o = size( files );
     for f = 1:1:o(1)
         
@@ -169,8 +260,8 @@ function x = denoiseImagesInFolder()
         fprintf( 2 , cat( 2 , 'Processing volume ', cat( 2 , volume_name , '...\n' ) ) );
         
         % Create folder for the results of this volume
-        mkdir( cat( 2 , '../../results/matlab/' , volume_name ) );
-        cd( cat( 2 , '../../results/matlab/' , volume_name ) );
+        %mkdir( cat( 2 , 'denoised/' , volume_name ) );
+        %cd( cat( 2 , 'denoised/' , volume_name ) );
         
         % Load package of images as Mat file
         load( cat( 2 , folder , volume_name ) );
@@ -188,7 +279,7 @@ function x = denoiseImagesInFolder()
             original = volume_data( : , : , i );
 
             % Configure KSVD parameters
-            params = setParameters( original , 8 , 256 , sigma , 40000 );
+            params = setParameters( original , 32 , 256 , sigma , 40000 );
 
             % Perform KSVD
             [ X , D ] = ksvddenoise( params , 0 );
@@ -197,8 +288,10 @@ function x = denoiseImagesInFolder()
             [mse(i) , psnr(i)] = evaluateResults( original , X );
             
             % Save images
-            dictionary = imresize( showdict( D , [1 1] * params.blocksize , round( sqrt( params.dictsize ) ) , round( sqrt( params.dictsize ) ) , 'lines' , 'highcontrast' ) , 2 , 'nearest' );
-            saveImages( original , X , dictionary , i );
+            %dictionary = imresize( showdict( D , [1 1] * params.blocksize , round( sqrt( params.dictsize ) ) , round( sqrt( params.dictsize ) ) , 'lines' , 'highcontrast' ) , 2 , 'nearest' );
+            %saveImages( original , X , dictionary , i );
+            imwrite( uint8( X ) , cat( 2 , int2str( i ) , '-denoised.jpg' ) ,'jpg');
+            imwrite( uint8( X ) , outputFileName , 'WriteMode' , 'append' ,  'Compression' , 'none' );
             
             clearvars original params X D dictionary
             
@@ -212,7 +305,7 @@ function x = denoiseImagesInFolder()
         clearvars -except folder files
         
     end
-    
+    toc;
 end
 
 
@@ -241,7 +334,7 @@ function params = setParameters( noisy_image , blocksize , dictsize , sigma , tr
     params.noisemode = 'sigma';         % 'sigma'
     params.gain = 1.15;                 % 1.15                      % decreasing the gain the images is less denoised but better perserves the edges
     params.lambda = 0.1 * 255 / sigma;  % 0.1 * maxval / sigma
-    params.maxatoms = 4;                % prod( blocsize ) / 2      % higher, better results
+    params.maxatoms = 40;                % prod( blocsize ) / 2      % higher, better results
     params.exact = 0;                   % 0                         % not much difference ?
     
 end
