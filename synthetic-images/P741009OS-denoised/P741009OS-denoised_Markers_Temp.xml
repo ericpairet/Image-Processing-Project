@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<markers>
+    <version>3.0</version>
+    <executable>
+        <name>OCTExplorer</name>
+        <version>3.6</version>
+        <date>04/01/2015</date>
+        <authors>Kyungmoo Lee, Michael D. Abramoff, Mona K. Garvin, Milan Sonka</authors>
+        <institute>Retinal Image Analysis Laboratory, The University of Iowa</institute>
+        <comment>For investigational use only, not FDA approved</comment>
+    </executable>
+    <modification>
+        <date>01/03/2016</date>
+        <time>00:21:01</time>
+        <modifier>NA</modifier>
+        <approval>N</approval>
+    </modification>
+    <scan_characteristics>
+        <manufacturer>MetaImage</manufacturer>
+        <size>
+            <unit>voxel</unit>
+            <x>1024</x>
+            <y>128</y>
+            <z>512</z>
+        </size>
+        <voxel_size>
+            <unit>um</unit>
+            <x>30.150000</x>
+            <y>30.150000</y>
+            <z>1.960000</z>
+        </voxel_size>
+        <laterality>NA</laterality>
+        <center_type>ONH</center_type>
+    </scan_characteristics>
+    <unit>voxel</unit>
+    <marker_num>0</marker_num>
+</markers>

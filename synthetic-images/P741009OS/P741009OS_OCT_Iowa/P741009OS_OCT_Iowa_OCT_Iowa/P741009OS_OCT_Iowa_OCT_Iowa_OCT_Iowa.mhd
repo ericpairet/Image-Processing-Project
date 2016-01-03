@@ -1,0 +1,13 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = False
+TransformMatrix = 1 0 0 0 0 1 0 1 0
+Offset = 0 0 0
+CenterOfRotation = 0 0 0
+AnatomicalOrientation = LAS
+ElementSpacing = 0.030150 0.001960 0.030150
+DimSize = 1024 512 128
+ElementType = MET_UCHAR
+ElementDataFile = P741009OS_OCT_Iowa_OCT_Iowa_OCT_Iowa.raw
