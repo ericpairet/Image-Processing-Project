@@ -1,4 +1,7 @@
 # Image-Processing-Project
 
-Online report:
-https://www.overleaf.com/3948101rnjyqt#/11433013/
+Online individual paper:
+https://www.overleaf.com/3948101rnjyqt
+
+Online joint paper:
+https://www.overleaf.com/4040912prxbmw
