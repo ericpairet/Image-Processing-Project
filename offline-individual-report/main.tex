@@ -1,11 +1,10 @@
-\documentclass[12pt,journal,compsoc]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 
 %%% Packages
 \usepackage{array}
 \usepackage{amsmath}
-\usepackage{caption}
 \usepackage{fancyhdr}
-\usepackage{graphicx}
+\usepackaged{graphicx}
 \usepackage{float}
 \usepackage[LGRgreek]{mathastext}
 \usepackage{lipsum}
@@ -14,49 +13,42 @@
 \usepackage{url}
 \usepackage{varwidth,xcolor}
 
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\median}{median}
+
 %%% Document
 \begin{document}
 
 % Title
-\title{Comparison of Denoising Algorithms}
-\author{Paola Ardon, Jose Bernal, Rodrigo Daudt, Seperh Mohaimanian, \`Eric Pairet, Armine Vardazaryan
-\vspace{0.2cm} \\
-        \small{Department of Electrical Engineering, University of Burgundy, France \\
-        %$^1\,$ \textit{ardonp@hotmail.com} \\
-		%$^2\,$ \textit{jose.bernal@correounivalle.edu.co} \\
-        %$^3\,$ \textit{rcdaudt@gmail.com} \\
-		%$^4\,$ \textit{Voidminded@gmail.com} \\
-        $^*\,$ \textit{eric.pairet@u-bourgogne.com} \\
-        %$^6\,$ \textit{arminevardazaryan@gmail.com}
-        }}
-        
-% Paper header
-\markboth{KSVD} {KSVD}
-\setlength\headheight{26pt}
+\title{A Comparison of K-SVD with Traditional Denoising Algorithms}
+
+\author{\IEEEauthorblockN{Paola Ard\'on, Jose Bernal, Rodrigo Daudt, Sepehr Mohaimanian, \`Eric Pairet\IEEEauthorrefmark{1}, Armine Vardazaryan}
+\IEEEauthorblockA{Department of Electrical Engineering, University of Burgundy \\
+Le Creusot, France \\
+Email: \IEEEauthorrefmark{1}eric.pairet@u-bourgogne.com}}
+\maketitle
+\thispagestyle{plain}
+\pagestyle{plain}
 
 % Abstract
-\IEEEtitleabstractindextext{
 \begin{abstract}
-Abstract...
+The advance of new technologies of this century has allowed to develop tools for medical process. In particular, analysis of retinopathy images has become one of the main ways to early detect some Non-Communicating Diseases, such as diabetes. The main problem of these kind of images is that noise is added during the acquisition step. This noise may imply wrong medical resolutions and, hence, human life may be affected. Thus, improving the quality of the inputs before processing is an important task. In this paper, a comparison of state-of-the-art denoising methods as well as the K-SVD algorithm is presented. The evaluation was performed on synthetic images and SD-OCT images. Results show that K-SVD is a suitable tool for denoising SD-OCT images since it is able to decrease the noise while preserving edges.
 \end{abstract}
 
 % Key words
 \begin{IEEEkeywords}
-Key words...
-\end{IEEEkeywords}}
-
-% Make the title area
-\maketitle
-
+Denoising algorithms, K-SVD, retinopathy images, OCT segmentation
+\end{IEEEkeywords}
+\IEEEpeerreviewmaketitle
 
 
 
 % Sections
-%\input{Sections/Introduction.tex}
-%\input{Sections/StateOfTheArt.tex}
-%\input{Sections/Experiments.tex}
+\input{Sections/Introduction.tex}
+\input{Sections/StateOfTheArt.tex}
+\input{Sections/Experiments.tex}
 \input{Sections/ResultsAndEvaluation.tex}
-%\input{Sections/FinalRemarks.tex}
+\input{Sections/FinalRemarks.tex}
 \input{Sections/Appendices.tex}
 
 % Bibliography
