@@ -1,0 +1,35 @@
+\section{Final remarks} \label{sc:final-remarks}
+
+\subsection{Subspace}
+A subspace-based denoising technique for SAR images has been presented and tested. The proposed technique (SDC) is based on linear estimator and reduced-rank
+subspace model to estimate the clean image from the corrupted one with speckle noise. The validity of the reduced-rank model in representing different SAR images
+has been verified and used to enhance the performance of the linear estimator. The capability of the proposed SDC technique in efficiently representing SAR images
+with reduced-rank values has been discussed and verified. Next, the performance of the SDC has been tested with simulated three-look amplitude data and compared with Lee and wavelet. The results indicate less noise variance reduction capability by SDC than Lee and wavelet but with less blur, less artifacts, and better preservation of the radiometric edges of the targets.
+
+\subsection{BMxD}
+The BM3D method was showing good results on synthetic images. The results of the PSNR registered in appendix after denoising synthetic images show most of the time higher values than the other algorithms described in this paper. 
+
+Images of the OCT volume were denoised with BM3D. Less noise can be seen on the images. However, values of the PSNR do not show as good results as on synthetic images and we can think that the BM4D algorithm can achieve to better denoise the whole volume since it performs denoising on 3D patches. 
+
+\subsection{K-SVD}
+The K-SVD algorithm was compared against different well-known techniques for denoising images such as mean, median, lee and wavelet-based filter. The algorithm was analysed in terms of influence of its parameters on the results and, also, on its capability to remove noise.
+
+The evaluation showed that the K-SVD algorithm was able to denoise synthetic and SD-OCT images achieving better results in some cases compared to the other algorithms.  Although noise was reduced, the segmentation carried out on an OCT volume evidenced that no significant improvement was observed between noisy and denoised images.
+
+The K-SVD algorithm is recommended for removing noise on SD-OCT images since, in terms of PSNR, the results were the best. However, further evaluation on the segmentation section should be done in order to determine the best parameters for this task.
+
+\subsection{NLM}
+
+Non Local Means filter is used for denoising images with different noise types like uniform, Gaussian, Rician, and salt and pepper noise. The NLM algorithm performed well when compared with some standard denoising techniques both in terms of the visual quality of the denoised image and the peak signal to noise ratio values. 
+
+     Optimized Bayesian NLM filter is used for denoising images with speckle noise type. Similar satisfactory qualitative and quantitative results were obtained.
+     
+     SD-OCT images were denoised using the algorithm. Although the denoising was successful, the subsequent OCT volume segmentation did not show much improvement compared to the segmentation results obtained before the denoising operation. 
+\subsection{PGPD}
+PGPD method has better denoising results than most of current state-of-art denoising methods. In the following, we will analyze the reason:
+
+First of all, based on the successful utilizations of nonlocal self-similarity (NSS) prior in many recent work, it is reasonable to use NSS for getting good results.
+On top of that, instead of simply following the previous study of NSS, PGPD method tries to learn NSS prior of clean images rather than noisy images. This could be one of the main contributions to the great performance of PGPD.
+
+Meanwhile, from our point of view, the reason that GMM usage gives a great performance is as follows: GMM reflects the nature property of clean images rather than noisy ones. Therefore, the learned prior provides less error while performing denoising.
+      

@@ -1,0 +1,53 @@
+\documentclass[12pt, conference]{IEEEtran}
+
+%%% Packages
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[LGRgreek]{mathastext}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{varwidth,xcolor}
+
+%%% Document
+\begin{document}
+
+% Title
+\title{An Extensive Comparison of Image Denoising Algorithms}
+\author{\IEEEauthorblockN{Introduction to Image Processing Class}
+\IEEEauthorblockA{Department of Electrical Engineering, University of Burgundy \\
+Le Creusot, France}}
+\maketitle
+\thispagestyle{plain}
+\pagestyle{plain}
+
+% Abstract
+\begin{abstract}
+The advance of new technologies of this century has allowed to develop tools for medical process. In particular, analysis of retinopathy images has become one of the main ways to early detect some Non-Communicating Diseases, such as diabetes. The main problem of this kind of images is that noise is added during the acquisition step. This noise may imply wrong medical resolutions and, hence, human life may be affected. Thus, improving the quality of the inputs before processing is an important task. In this paper, a comparison of state-of-the-art denoising methods as well as the recent algorithms is presented. The evaluation was performed on synthetic images and SD-OCT images. Results show that K-SVD is a suitable tool for denoising SD-OCT images since it is able to decrease the noise while preserving edges.
+\end{abstract}
+
+% Key words
+\begin{IEEEkeywords}
+Denoising algorithms, subspace filter, BMxD, K-SVD, NLM, PGPD, retinopathy images, OCT segmentation
+\end{IEEEkeywords}
+\IEEEpeerreviewmaketitle
+
+% Sections
+\input{Sections/Introduction.tex}
+\input{Sections/StateOfTheArt.tex}
+\input{Sections/Experiments.tex}
+\input{Sections/ResultsAndEvaluation.tex}
+\input{Sections/FinalRemarks.tex}
+\input{Sections/Appendices.tex}
+
+% Bibliography
+\bibliographystyle{unsrt}
+\bibliography{Bibliography}
+
+\end{document}
+
+
