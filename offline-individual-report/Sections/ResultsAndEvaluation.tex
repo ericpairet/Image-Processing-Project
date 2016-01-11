@@ -5,7 +5,7 @@ The algorithms were evaluated under the conditions presented in Section \ref{sc:
 K-SVD algorithm, as presented in Section \ref{sc:description-ksvd}, requires to tune up some parameters. Each variable was varied during the evaluation process to observe its impact on the results. In general, the observed impact was the following:
 
 \subsubsection{Block size}
-Block size: The block size represents the dimension of the patch to consider. On one hand, when evaluating synthetic images, the higher the value of the parameter, the more blurred the result. On the other hand, the best results for SD-OCT was obtained when using a block size of 32 -- the biggest value tested for this parameter.
+The block size represents the dimension of the patch to consider. On one hand, when evaluating synthetic images, the higher the value of the parameter, the more blurred the result. On the other hand, the best results for SD-OCT was obtained when using a block size of 32 -- the biggest value tested for this parameter.
 
 \begin{figure}[H]
   \centering
@@ -48,7 +48,7 @@ The influence of this parameter is seen on the edges of the resulting images. Wh
 This parameter is related to the number of elements on the dictionary to consider when reconstructing a patch of the noisy image. The higher the value, the better the reconstruction but also the slower the algorithm gets. Thus, the idea is to find the minimum value such that the trade-off between reconstruction and computation time is balanced. 
  
 \subsubsection{Noise estimation} \label{sc:noise-estimation}
-As stated previously, the level of distortion on the SD-OCT images is not known beforehand and this value is required by the K-SVD algorithm. Then, the estimation of this parameter is carried out. The method consists in taking an homogenous patch of the image and, by looking at the histogram, determine the sigma value. The observed value for sigma among the test set was around $10$. Moreover, we calculated this parameter for different retinopathy volumes getting similar results.
+As stated previously, the level of distortion on the SD-OCT images is not known beforehand and this value is required by the K-SVD algorithm. Then, the estimation of this parameter is carried out. The method consists in taking a homogeneous patch of the image and, by looking at the histogram, determine the sigma value. The observed value for sigma among the test set was around $10$. Moreover, we calculated this parameter for different retinopathy volumes getting similar results.
 
 \subsection{Synthetic images} \label{sc:results_synthetic}
 In this section, the obtained results of denoising the synthetic images with the methods explained in Section \ref{sc:state-of-the-art} are shown. 
@@ -56,6 +56,7 @@ In this section, the obtained results of denoising the synthetic images with the
 First, the mean, median, local statistics and wavelet filters are evaluated with the synthetic images of Section \ref{sc:experimental_sythetic}. After that, the K-SVD filter is applied in such images. With these last results, proper comparisons are done between the K-SVD and the traditional denoising algorithms.
 
 \subsubsection{Mean filter}
+Fig. \ref{fig:results_mean_c} shows the results of the proposed images after the mean filter is applied. As observed from the colormap set, the filter has a better performance on Rician noise compared to the rest of images.
 
 \begin{figure}[H]
   \centering
@@ -85,12 +86,13 @@ First, the mean, median, local statistics and wavelet filters are evaluated with
         \subfigure{\includegraphics[width=16mm]{Figures/results_mean/color_cameraman_spec.jpg}}\\
         \subfigure{\includegraphics[width=16mm]{Figures/results_mean/color_baboon_spec.jpg}}
       \end{varwidth}
-  	\end{tabular}
-  \caption{Denoised images with the mean filter represented in a colormap format. From left to right: additive Gaussian, additive Rician, additive uniform, additive salt and pepper and multiplicative speckle noise, respectively.} 
+      \end{tabular}
+  \caption{Denoised images with the mean filter represented in a colour map format. From left to right: additive Gaussian, additive Rician, additive uniform, additive salt and pepper and multiplicative speckle noise, respectively.} 
   \label{fig:results_mean_c}
 \end{figure}
 
 \subsubsection{Median filter}
+Fig. \ref{fig:results_median_c} shows the results of the proposed images after the median filter is applied. As observed from the colour map set, the filter has a better performance on salt and pepper compared to the rest of images.
 
 \begin{figure}[H]
   \centering
@@ -120,13 +122,14 @@ First, the mean, median, local statistics and wavelet filters are evaluated with
         \subfigure{\includegraphics[width=16mm]{Figures/results_median/color_cameraman_spec.jpg}}\\
         \subfigure{\includegraphics[width=16mm]{Figures/results_median/color_baboon_spec.jpg}}
       \end{varwidth}
-  	\end{tabular}
+      \end{tabular}
   \caption{Denoised images with the median filter represented in a colormap format. From left to right: additive Gaussian, additive Rician, additive uniform, additive salt and pepper and multiplicative speckle noise, respectively.} 
-  \label{fig:Figures/results_Lee_c}
+  \label{fig:results_median_c}
 \end{figure}
 
 
 \subsubsection{LS filter}
+Fig. \ref{fig:results_lee_c} shows the results of the proposed images after local statistics filter is applied. As observed from the colormap set, the filter has a better performance on denoising high-frequency images with Gaussian, Rician or uniform noise.
 
 \begin{figure}[H]
   \centering
@@ -156,12 +159,13 @@ First, the mean, median, local statistics and wavelet filters are evaluated with
         \subfigure{\includegraphics[width=16mm]{Figures/results_Lee/color_cameraman_spec.jpg}}\\
         \subfigure{\includegraphics[width=16mm]{Figures/results_Lee/color_baboon_spec.jpg}}
       \end{varwidth}
-  	\end{tabular}
+      \end{tabular}
   \caption{Denoised images with the LS filter represented in a colormap format. From left to right: additive Gaussian, additive Rician, additive uniform, additive salt and pepper and multiplicative speckle noise, respectively.} 
-  \label{fig:results_lee}
+  \label{fig:results_lee_c}
 \end{figure}
 
 \subsubsection{Wavelet filter}
+Fig. \ref{fig:results_wavelet_c} shows the results of the proposed images after the median filter is applied. As observed from the results represented in Section \ref{sc:final-remarks}, the Wavelet filter does not perform better than other methods. 
 
 \begin{figure}[H]
   \centering
@@ -191,13 +195,13 @@ First, the mean, median, local statistics and wavelet filters are evaluated with
         \subfigure{\includegraphics[width=16mm]{Figures/results_wavelet/color_cameraman_spec.jpg}}\\
         \subfigure{\includegraphics[width=16mm]{Figures/results_wavelet/color_baboon_spec.jpg}}
       \end{varwidth}
-  	\end{tabular}
+      \end{tabular}
   \caption{Denoised images with the wavelet filter represented in a colormap format. From left to right: additive Gaussian, additive Rician, additive uniform, additive salt and pepper and multiplicative speckle noise, respectively.} 
   \label{fig:results_wavelet_c}
 \end{figure}
 
 \subsubsection{K-SVD filter}
-%The obtained results for the K-SVD filter are shown in Fig. \ref{fig:results_synthetic_ksvd}.
+Fig. \ref{fig:results_synthetic_ksvd} shows the results of the proposed images after K-SVD filter is applied. As observed from the colormap set and the results represented in Section \ref{sc:final-remarks}, the filter has a better performance on Gaussian, uniform and speckle noise. However, its performance is not remarkable when denoising high-frequency images.
 
 \begin{figure}[H]
   \centering
@@ -227,7 +231,7 @@ First, the mean, median, local statistics and wavelet filters are evaluated with
         \subfigure{\includegraphics[width=16mm]{Figures/results_KSVD/color_cameraman_spec.jpg}}\\
         \subfigure{\includegraphics[width=16mm]{Figures/results_KSVD/color_baboon_spec.jpg}}
       \end{varwidth}
-  	\end{tabular}
+      \end{tabular}
   \caption{Denoised images with the K-SVD filter. From left to right: removing Gaussian, Rician, uniform, salt and pepper and speckle noise, respectively.} 
   \label{fig:results_synthetic_ksvd}
 \end{figure}
@@ -241,13 +245,13 @@ The comparative results are shown in Fig. \ref{fig:results_synthetic_ksvd_evalua
   \label{fig:results_synthetic_ksvd_evaluation}
 \end{figure}
 
-K-SVD algorithm is able to remove noise from the different test images. However, its performance was not always the best. It can be observed that in some cases, the values of PSNR for mean filter and median filter are higher than the ones for K-SVD. Contrarily, we see that the wavelet filter does not succeed in filtering any of the types of noise, compared to other methods. 
+The K-SVD algorithm is able to remove noise from the different test images. However, its performance was not always the best. It can be observed that in some cases, the values of PSNR for mean filter and median filter are higher than the ones for K-SVD. Contrarily, we see that the wavelet filter does not succeed in filtering any of the types of noise, compared to other methods. 
 
 As expected, median filter outperforms when evaluated under salt and pepper noise in comparison with the other algorithms. 
 
 
 \subsection{Retinopathy images} 
-To provide a quantitative comparison of the denoised retinopathy images with the different methods, we computed the PSNR. In this case, it was performed between the input image and the output of each algorithm. It is clear that although this computation does not give the real PSNR, the obtained value is useful to get an idea of the performance of the different algorithms. In general terms, K-SVD is able to reduce noise on the image without affecting the key components (the layers on the images) more than the other algorithms.
+To provide a quantitative comparison of the denoised retinopathy images with the different methods, we computed the PSNR. In this case, it was performed between the input image and the output of each algorithm. The obtained results was of 26.68 dB. It is clear that although this computation does not give the real PSNR, the obtained value is useful to get an idea of the performance of the different algorithms. In general terms, K-SVD is able to reduce noise on the image without affecting the key components (the layers on the images) more than the other algorithms.
 
 \begin{figure}[H]
   \centering

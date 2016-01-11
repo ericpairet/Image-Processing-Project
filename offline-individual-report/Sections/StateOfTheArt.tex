@@ -1,13 +1,11 @@
 \section{Denoising Algorithms} \label{sc:state-of-the-art}
-%%We can add kind of intro to this section
 In the following sections, we discussed the idea behind some traditional and state-of-the-art denoising algorithms as well as their advantages and disadvantages.
 
 \subsection{Mean filter}
-
 Given a noisy image $g$, the restored value on the denoised image $\hat{f}$ at the position $(x, y)$ corresponds to the average of the neighbourhood $N$ (See Eq. \ref{eq:mean-filter}).
 
 \begin{equation}
-	\hat{f}(x, y) = \frac{1}{|N(x, y)|}\sum_{(u, v) \in N(x, y)}{g(x, y)}.
+    \hat{f}(x, y) = \frac{1}{|N(x, y)|}\sum_{(u, v) \in N(x, y)}{g(x, y)}.
     \label{eq:mean-filter}
 \end{equation}
 
@@ -15,31 +13,28 @@ This process acts on the supposition that the noise is concentrated on the upper
 
 This is the simplest denoising method and is not very effective. Denoising through mean filter simply applies a linear transformation to the image (a convolution with a smoothing kernel), and it makes no attempt to interpret the information in the image and use it in the denoising process.
 
-The main drawbacks of this method is that is sensible to outliers and that it blurs the processed image.
+The main drawbacks of this method are that is sensible to outliers and that it blurs the processed image.
 
 \subsection{Median filter}
-
-Median filter is a spatial filter based on order-statistics. It replaces the value at each position with the 50th percentile of the neighbourhood (See Eq. \ref{eq:median-filter}). 
+The median filter is a spatial filter based on order statistics. It replaces the value at each position with the 50th percentile of the neighbourhood (See Eq. \ref{eq:median-filter}). 
 
 \begin{equation}
-	\hat{f}(x, y) = \median\limits_{(u, v) \in N(x, y)}{g(x, y)},
+    \hat{f}(x, y) = \median\limits_{(u, v) \in N(x, y)}{g(x, y)},
     \label{eq:median-filter}
 \end{equation}
 
-Unlike mean filter, median filter is able to detect outliers of a neighbourhood and remove them with a smaller impact on the higher frequencies. For the same reason, this filter is well-known for denoising images affected by salt-and-peper noise. 
+Unlike the mean filter, the median filter is able to detect outliers of a neighbourhood and remove them with a smaller impact on the higher frequencies. For the same reason, this filter is well-known for denoising images affected by salt and pepper noise. 
 
-%The main drawback of this method is its computational complexity for large groups of data. % What? No!
+\subsection{Filtering by Use of Local Statistics (LS filter)}
+Digital Image enhancement by using local statistics is a computational technique that involves contrast and noise filtering on two-dimensional arrays based on their local mean and variance. One of the greatest advantages of this type of algorithms is that they are non-recursive and each pixel is processed independently. As a consequence, this approach has a great advantage when is used in real time image processing.
 
-\subsection{Filtering by Use of Local Statistics}
-
-Digital Image enhancement by using local statistics is a computational technique that involves contrast and noise filtering on two-dimensional arrays based on their local mean and variance. One of the greatest advantages of this type of algorithms is that they are non-recursive and each pixel is processed independently. As a consequence this approach has a great advantage when is used in real time image processing.
-
-This algorithm was developed to overcome the greatest problem of early techniques in image processing, the computation of the image transformation. Usually, the Fourier or Walsh transform does not represent a big setback for one dimensional data array, however it was very time consuming for a two dimensional array. As a result, these early techniques were proved not to be suitable for real time image processing applications.
+This algorithm was developed to overcome the greatest problem of early techniques in image processing, the computation of the image transformation. Usually, the Fourier or Walsh transform does not represent a big setback for the one-dimensional data array. However, it was very time consuming for a two-dimensional array. As a result, these early techniques were proved not to be suitable for real-time image processing applications.
 
 The assumption of the algorithm based on local statistics is that the sample mean and variance of a pixel is equal to the local mean and variance of all the pixels within a fixed range. For example, in the additive noise filtering case, the variance is calculated as the difference variance of the noise in the corrupted image and the noise itself, the same method is used for multiplicative noise.
-This simple approach has been pointed as to lack mathematical elegance and sophistication, compared to other techniques, however the results indicate it is a very effective tool for contrast stretching and noise filtering of images.
+This simple approach has been pointed as to lack mathematical elegance and sophistication, compared to other techniques. However, the results indicate it is a very effective tool for contrast stretching and noise filtering of images.
 
-Let $x_{ij}$ be the brightness of the pixel $(i,j)$ in a two dimensional $N\times N$ image. The local mean and variance are then calculated over a $(2n+1) \times (2m+1)$ window. The local mean is defined as:
+Let $x_{ij}$ be the brightness of the pixel $(i,j)$ in a two 
+-dimensional $N\times N$ image. The local mean and variance are then calculated over a $(2n+1) \times (2m+1)$ window. The local mean is defined as:
 
 \begin{equation}
     \mu_{ij}=\dfrac{1}{(2n+1)(2m+1)}\sum_{k=i-n}^{n+i}\sum_{l=j-m}^{m+j}{x_{kl}},
@@ -53,7 +48,7 @@ and the local variance is:
     \label{eq:ls_filter_2}
 \end{equation}
 
-From these equations it is not hard to extend the algorithm to deal with images corrupted by additive or multiplicative noise or even both. A noisy corrupted image is described as: 
+From these equations, it is not hard to extend the algorithm to deal with images corrupted by additive or multiplicative noise or even both. A noise corrupted image is described as: 
 
 \begin{equation}
 z_{ij} = x_{ij}*u_{ij} + w_{ij}.
@@ -67,10 +62,10 @@ Where the mean and variance are calculated as:
     \label{eq:ls_filter_4}
 \end{equation}
 
-From the structure of the algorithm, it is easy to see that the principal computational load relays on the calculation of the local mean and variance of the image. To make the calculations faster, an improvement to the algorithm is proposed where the image is partitioned in square sub regions over which the local variance and mean are calculated. Further, the local mean and variance of a pixel are approximated by the use of two dimensional interpolation formulas. This improvement seems to be promising and perfectly suitable for real time -parallel image processing.
+From the structure of the algorithm, it is easy to see that the principal computational load relays on the calculation of the local mean and variance of the image. To make the calculations faster, an improvement to the algorithm is proposed where the image is partitioned in square sub-regions over which the local variance and mean are calculated. Further, the local mean and variance of a pixel are approximated by the use of two-dimensional interpolation formulas. This improvement seems to be promising and perfectly suitable for real time -parallel image processing.
 
-\subsection{Hard and soft thresholding in wavelet domain}
-Wavelet transform is a signal processing technique for cases when frequency varies over time. For certain classes of signals and images, wavelet analysis provides more precise information about signal data than other signal analysis techniques.
+\subsection{Hard and soft thresholding in wavelet domain (wavelet filter)}
+The Wavelet transform is a signal processing technique for cases when frequency varies over time. For certain classes of signals and images, wavelet analysis provides more precise information about signal data than other signal analysis techniques.
 
 The wavelet transform is used extensively in signal de-noising. The usual way to de-noise signals in wavelet domain is to first transform the signal into wavelet domain, apply hard or soft thresholding and then transform back. 
 
@@ -94,16 +89,16 @@ Soft thresholding, just like hard thresholding, incorporates a transformation of
 
 where, again, $t$ is the threshold value.
 
-However, when the signal contains discontinuities, the de-noising will also result in artifacts: pseudo-Gibbs phenomena, when the signal is alternatingly overshooting or undershooting its level. These artifacts depend on the precise alignment between the signal and the basis elements, therefore depend both on wavelets and the input data. 
+However, when the signal contains discontinuities, the de-noising will also result in artifacts: pseudo-Gibbs phenomena, when the signal is alternatingly overshooting or undershooting its level. These artifacts depend on the precise alignment between the signal and the basis elements, therefore, depend both on wavelets and the input data. 
 
-A solution was proposed in ``Translation-Invariant De-Noising"~\cite{wavelet}, where Coifman and Donoho present an algorithm to minimize the effects of this phenomenon. They propose to shift the signal prior to thresholding, then shift the signal back. This can be done for both time and frequency shifting. For the case of a time-shift, let $S_{h}$ denote the circulant shift by $h$: $(S_{h}x)_{t}=x_{(t+h)}, $where $x_{t}\in0\leq t\leq n$ is the given signal. A frequency shift by $\xi$ can be represented as follows: $(M_{\xi}x)_{t}=e^{i\xi t}x_{t}$, where $M_{\xi}$ is the modulation. To incorporate the shifting into the denoising scheme, signal is first shifted, de-noised then unshifted. A better way is to average the result of this process using a range of shifts.
+A solution was proposed in ``Translation-Invariant De-Noising"~\cite{wavelet}, where Coifman and Donoho present an algorithm to minimize the effects of this phenomenon. They propose to shift the signal prior to thresholding, then shift the signal back. This can be done for both time and frequency shifting. For the case of a time-shift, let $S_{h}$ denote the circulant shift by $h$: $(S_{h}x)_{t}=x_{(t+h)}, $where $x_{t}\in0\leq t\leq n$ is the given signal. A frequency shift by $\xi$ can be represented as follows: $(M_{\xi}x)_{t}=e^{i\xi t}x_{t}$, where $M_{\xi}$ is the modulation. To incorporate the shifting into the denoising scheme, the signal is first shifted, de-noised then unshifted. A better way is to average the result of this process using a range of shifts.
  
 Because there is no single `right' choice for the shift parameters $h$ and $\xi$ that will yield the best result for all signals, the authors use a technique called cycle-spinning, where the wavelet de-noising is averaged over all $n$ circulant shifts, without restraining the value to a range. This technique is translation invariant and requires only $n\log(n)$ time.
 
 \subsection{K-SVD} \label{sc:description-ksvd}
-This method of de-noising is based on sparse and redundant representations over trained dictionaries. In~\cite{ksvd} the authors propose two possible implementations: with an already existing dictionary, or with training a new dictionary using corrupted or high-quality images. The algorithm minimizes the error $||D\alpha-x||_{2}, $where $D$ is the used dictionary, $x$ is the de-noised image and $\alpha$ is a vector that represents the columns of dictionary $D$ needed to reconstruct the image $x$. $x$ is processed in small patches of $\sqrt{n}$ x $\sqrt{n}$. The used dictionary must be based on the Sparseland model: The Sparseland model can be represented with the triplet $(\epsilon,L,D)$, where $\epsilon$ is the upper limit for the error of de-noising, and $L$ is the maximum number of non-zero elements in $\alpha$. It is required that the corrupted image in this algorithm belong to the Sparseland model. That means that all $\sqrt{n}$ x $\sqrt{n}$ patches in the image can be represented through columns of the matrix $D$.
+This method of de-noising is based on sparse and redundant representations over trained dictionaries. In ~\cite{ksvd} the authors propose two possible implementations: with a dictionary pre-trained with high quality images, or with training a new dictionary using the corrupted. The algorithm minimizes the number of components $||\alpha||_{0}, $ while the error $||D\alpha-X||_{2}$ is bounded, where $D$ is the used dictionary, $X$ is the input image image and $\alpha$ is a vector that represents the columns of dictionary $D$ needed to reconstruct the image $X$. $X$ is processed in small patches of $\sqrt{n}$ x $\sqrt{n}$. The used dictionary must be based on the Sparseland model: The Sparseland model can be represented with the triplet $(\epsilon,L,D)$, where $\epsilon$ is the upper limit for the sum of the square differences between the input image and its denoised version, $D$ is the used overcomplete dictionary, and $L$ is the maximum number of non-zero elements in $\alpha$. It is required that the corrupted image in this algorithm belong to the Sparseland model. That means that all $\sqrt{n}$ x $\sqrt{n}$ patches in the image can be represented through columns of the matrix $D$.
 
-The Sparseland dictionary $D$ can be iteratively trained using image patches($Z$) of good quality, each of size $\sqrt{n}$ x $\sqrt{n}$. At each iteration, $D$ can be found through minimizing the following expression:
+The Sparseland dictionary $D$ can be trained using image patches ($Z$) of good quality, each of size $\sqrt{n}$ x $\sqrt{n}$. $D$ can be found through minimizing the following expression:
 
 \begin{equation}
     \epsilon(D,\{a_{j}\}_{j=1}^{M})=\displaystyle \sum_{j=1}^{M}[\mu_{j}||\alpha||_{0}+||D\alpha_{j}-z_{j}||_{2}^{2}],
@@ -112,18 +107,16 @@ The Sparseland dictionary $D$ can be iteratively trained using image patches($Z$
 
 where $\mu$ is chosen implicitly. 
 
-The next step, then, is to use $D$ to compute a set of near-optimal vectors $\alpha$,
+The next step, then, is to use $D$ to compute a set of near-optimal projections $\alpha$. The proposed algorithm to calculate $\alpha$ is the Orthonormal Matching Pursuit (OMP) algorithm, which is an approximation algorithm \cite{ksvd}. The expression for $\alpha$ is:
 
 \begin{equation}
-    \hat{\alpha}_{ij}=\argmin\limits_\alpha \mu_{ij}||\alpha||_{0}+||D\alpha-x_{ij}||_{2}^{2}.
+    \hat{\alpha}_{ij}=arg \displaystyle\min_{\alpha} \mu_{ij}||\alpha||_{0}+||D\alpha-x_{ij}||_{2}^{2}.
     \label{eq:ksvd_2}
 \end{equation}
 
-This process guarantees a decreasing error after each iteration. 
+Alternately, patches from the corrupted image can be used for iteratively training the dictionary $D$, as K-SVD dictionary learning process has a noise rejection capability.
 
-Alternately, patches from the corrupted image can be used for training the dictionary $D$, as K-SVD dictionary learning process has a noise rejection capability.
-
-In this case, at first, $D$ is assumed to be known. The problem is then defines as
+In this case, at first, $D$ is assumed to be known. We can begin the process using a pre-trained dictionary or using any overcomplete dictionary so that a sparse representation $\alpha$ is possible, such as an overcomplete DCT dictionary. The problem is then defined as
 
 \begin{equation}
 	\begin{split}
@@ -132,7 +125,7 @@ In this case, at first, $D$ is assumed to be known. The problem is then defines 
     \label{eq:ksvd_3}
 \end{equation}
 
-where $R$ is a matrix that extracts the (i,j) block from the image and $Y$ is the corrupted image.
+where $R$ is a matrix that extracts all the (i,j) patches from the image in the Sparseland format and $Y$ is the corrupted image.
 
 First, $D$ and $X$ are assumed fixed, which permits to compute $\hat{\alpha}_{ij}$. Then, given $\hat{\alpha}_{ij}$, the dictionary $D$ can be recomputed using K-SVD. After that, using both $D$ and $\alpha$, an output image $X$ can be computed:
 
@@ -143,4 +136,4 @@ First, $D$ and $X$ are assumed fixed, which permits to compute $\hat{\alpha}_{ij
 
 But because the new $X$ will have a different level of noise, and that value is used in preceding steps, a few more iterations of this process are performed.
 
-Summarizing, this denoising method is based on local operations and involves a sparse decomposition of the image blocks, using a dictionary. The dictionary is trained on patches of a noisy or a high-quality image.
+Summarizing, this denoising method is based on local operations and involves a sparse decomposition of the image blocks, using a dictionary. The dictionary is trained on patches of a high-quality image or on patches of the noisy image itself.

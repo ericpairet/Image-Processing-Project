@@ -2,7 +2,7 @@
 In order to do a qualitative and quantitative analysis of the algorithms presented in Section \ref{sc:state-of-the-art}, a set of trials based on synthetic images was set up. The carried evaluation is twofold: (1) the algorithms were evaluated using synthetic images which were degenerated with a known type of noise and specific parameters for them; (2) we tested the different denoising techniques on retinopathy images. The complexity of denoising these images is that the kind of noise and its parameter are not known. Therefore, some noisy parameters have to be estimated.
 
 \subsection{Synthetic images} \label{sc:experimental_sythetic}
-When talking about synthetic images, one makes reference to those in which the level of noise is low.  The interest of using this kind of images for testing is that they have some characteristics related, for instance, to the content of high frequencies or low frequencies. Degenerated versions of these images can be used to evaluate the performance of denoising algorithms since the originals are known. To make the synthetic images, the three images shown in Fig. \ref{fig:setup_synthetic_originals} were noised in purpose. Cameraman image is characterised by having low frequencies, lena image has intermediate frequencies and baboon image is composed by high frequencies. Therefore, using this images as a base of the synthetic images will give a proper analysis expanding the vast majority of the frequency range.
+When talking about synthetic images, one makes reference to those in which the level of noise is low.  The interest of using this kind of images for testing is that they have some characteristics related, for instance, to the content of high frequencies or low frequencies. Degenerated versions of these images can be used to evaluate the performance of denoising algorithms since the originals are known. To make the synthetic images, the three images shown in Fig. \ref{fig:setup_synthetic_originals} were noised in purpose. Cameraman image is characterised by having low frequencies, Lena image has intermediate frequencies and baboon image is composed by high frequencies. Therefore, using this images as a base of the synthetic images will give a proper analysis expanding the vast majority of the frequency range.
 
 \begin{figure}[H]
   \centering
@@ -21,20 +21,20 @@ When talking about synthetic images, one makes reference to those in which the l
   \label{fig:setup_synthetic_originals}
 \end{figure}
 
-Each one of these images was noised with 5 different types of noise: Gaussian, Rician, uniform, salt and pepper and speckler noise. While the first four types of noise are additive, the last one is multiplicative. Specifically, the characteristic parameters of the each kind of noise are represented in Table \ref{tb:noising_parameters}.
+Each one of these images was corrupted with 5 different types of noise: Gaussian, Rician, uniform, salt and pepper and speckle noise. While the first four types of noise are additive, the last one is multiplicative. Specifically, the characteristic parameters of each kind of noise are represented in Table \ref{tb:noising_parameters}.
 
 \begin{table}[H]
-	\centering
+    \centering
     \caption{Characteristics of the different types of noise.}
-	\begin{tabular}{|c|c|}
+    \begin{tabular}{|c|c|}
     \hline
-	\textbf{Type of noise} & \textbf{Characteristics} \\ \hline
+    \textbf{Type of noise} & \textbf{Characteristics} \\ \hline
     Gaussian & $\mu$=0 , $\sigma$=0.1 \\ \hline
     Rician & $\mu$=0.05 , $\sigma$=0.1 \\ \hline
     Uniform & $\mu$=0 , $\sigma$=0.1 \\ \hline
     Salt and Pepper & 5\% salt , 5\% pepper \\ \hline
     Speckle & $\mu$=0 , $\sigma$=0.04 \\ \hline
-	\end{tabular}
+    \end{tabular}
     \label{tb:noising_parameters}
 \end{table}
 
